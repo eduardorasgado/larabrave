@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="container">
                 <!--bloque de contenido en Blade-->
                 @yield('content')
 

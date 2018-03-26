@@ -17,4 +17,3 @@
 //del controlador nombrado
 Route::get('/', 'PagesController@home');
 
-Route::get('/about', 'PagesController@aboutUs');

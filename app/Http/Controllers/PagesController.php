@@ -20,23 +20,31 @@ class PagesController extends Controller
 {
     public function home()
     {
-    	$creator = "EduardoRasgadoRuiz";
-
-		$links = [
-		     "https://laravel.com/docs" => "Documentación",
-		"https://laracasts.com" => "Laracast",
-		"https://laravel-news.com" => "Noticias",
-		"https://forge.laravel.com" => "Forge",
-		"https://github.com/laravel/laravel" => "GitHub",
-		    ];
+    	$messages = [
+    		[
+    			'id' => 1,
+	    		'content' => 'Este es mi primer mensaje!',
+	    		'image' => 'http://placeimg.com/600/338/any?1'
+    		],
+    		[
+    			'id' => 2,
+	    		'content' => 'Este es mi segundo mensaje!',
+	    		'image' => 'http://placeimg.com/600/338/any?2'
+    		],
+    		[
+    			'id' => 3,
+	    		'content' => 'Este es mi tercer mensaje!',
+	    		'image' => 'http://placeimg.com/600/338/any?3'
+    		],
+    		[
+    			'id' => 4,
+	    		'content' => 'Este es mi cuarto mensaje!',
+	    		'image' => 'http://placeimg.com/600/338/any?4'
+    		]
+    	];	
 	    return view('welcome',[
-	    	'links' => $links,
-	    	'creator' => $creator
+	    	'messages' => $messages
 	    ]);
     } //home
 
-    public function aboutUs()
-    {
-    	return view('about');
-    } //abouUs
 }
