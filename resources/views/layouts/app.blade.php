@@ -31,6 +31,16 @@
 
             </div>
         </div>
+        
+        <div class="container-fluid">
+            <footer class="">
+                <div class="py-3 text-center">
+                    <p>Larabrave. All Rights Reserved &copy;2018. ER Web Labz</p>
+                </div>
+            </footer>
+        </div>
+        
+        
 
         <!--JS de Bootstrap-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

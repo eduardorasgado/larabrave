@@ -24,7 +24,7 @@
 
         <!--is-invalid es una clase de bootstrap-->
         <input class="form-control @if($errors->has('message')) is-invalid @endif" type="text" name="message" placeholder="Qué estás pensando?" maxlength="160" size="80">  
-        
+
         @if($errors->has('message'))
           {{-- NOs dará todos los errores relacionados al message --}}
           @foreach($errors->get('message') as $error)
@@ -49,7 +49,10 @@
 
         {{-- Para la paginacion de la web, tomando los datos de paginate()--}}
         @if(count($messages))
-          {{ $messages->links('pagination::bootstrap-4')}}
+          <!--margin top y margin x en class-->
+          <div class="mt-2 mx-auto">
+            {{ $messages->links('pagination::bootstrap-4')}}
+          </div>
         @endif
    </div>
 @endsection
