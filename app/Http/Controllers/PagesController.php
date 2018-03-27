@@ -27,7 +27,7 @@ class PagesController extends Controller
     	//como si fuesen arrays
 
     	//Pero la mejor forma es traer los datos como propiedades del objeto
-    	$messages = Message::all();	
+    	$messages = Message::paginate(10);	
 
 	    return view('welcome',[
 	    	'messages' => $messages

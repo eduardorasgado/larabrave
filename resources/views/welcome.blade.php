@@ -46,5 +46,10 @@
         @empty
         <p>Disculpa, algo salió mal, no hay contenido :(</p>
         @endforelse
+
+        {{-- Para la paginacion de la web, tomando los datos de paginate()--}}
+        @if(count($messages))
+          {{ $messages->links('pagination::bootstrap-4')}}
+        @endif
    </div>
 @endsection

@@ -5,6 +5,9 @@ use Faker\Generator as Faker;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
+	
+	Sirve para hacer TESTING DE LA WEB APP 
+
 |--------------------------------------------------------------------------
 |
 | This directory should contain each of the model factory definitions for
@@ -31,18 +34,50 @@ $factory->define(App\Message::class, function(Faker $faker){
 		//se devuelve un array, asi mismo hay 
 		//paragraph, realText
 		//
-		'content' => $faker->realText(),
+		'content' => $faker->realText(random_int(20, 160)),
 		'image' => $faker->imageUrl(600,338)
 
 	];
 });
 
 /*
-Para activar las factories lo hacemos con Tinker, revisando en composer.json si tenemos la dependencia externa, en caso contrario, debemos integrarla
+
+PARA VER COMO FUNCIONA FACTORY
+
+Debemos tener Tinker, revisando en composer.json si tenemos la dependencia externa, en caso contrario, debemos integrarla
 
 tinker usualmente viene sin ser integrada directamente al
 proyecto para darnos eleccion si meterla o no en desarrollo o produccion
 
-Por otra parte una vez confirmado recurrimos a app/cinfig/app.php y vamos a providers a comprobar como integrar eso con "use" 
+Por otra parte una vez confirmado recurrimos a app/config/app.php y vamos a providers a comprobar como integrar eso con "use" 
+Si no esta, lo incluimos como:
+
+	Laravel\Tinker\TinkerServiceProvider::class,
+
+y ejecutamos en consola:
+
+	composer install 
+
+dentro del proyecto
+
+Ahora:
+
+	php artisan tinker
+
+ya en consola de tinker:
+
+	>>>$message = factory(App\Message::class)->create()
+
+Que creara ejemplos de muestra sin tocar la DB, pero al
+ejecutar:
+
+	>>>$message = factory(App\Message::class)->create()
+
+guardara los datos que consiga de los fake data en la DB
+
+PERO ASI NO SE HACE TESTING, RECURRIREMOS A SEEDS PARA HACERLO DE FORMA MAS PROFESIONAL
+
+Vamos a database/seeds/DatabaseSeeder.php
+
 
 */
