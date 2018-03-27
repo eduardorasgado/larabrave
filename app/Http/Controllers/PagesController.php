@@ -15,33 +15,20 @@ index,create,store,show,update,destroy
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Message;
 
 class PagesController extends Controller
 {
     public function home()
     {
-    	$messages = [
-    		[
-    			'id' => 1,
-	    		'content' => 'Este es mi primer mensaje!',
-	    		'image' => 'http://placeimg.com/600/338/any?1'
-    		],
-    		[
-    			'id' => 2,
-	    		'content' => 'Este es mi segundo mensaje!',
-	    		'image' => 'http://placeimg.com/600/338/any?2'
-    		],
-    		[
-    			'id' => 3,
-	    		'content' => 'Este es mi tercer mensaje!',
-	    		'image' => 'http://placeimg.com/600/338/any?3'
-    		],
-    		[
-    			'id' => 4,
-	    		'content' => 'Este es mi cuarto mensaje!',
-	    		'image' => 'http://placeimg.com/600/338/any?4'
-    		]
-    	];	
+    	//traido del modelo
+    	//en forma de un objeto que puede ser usado como array
+    	//de arrays, por eso en la view podemos tomar los datos
+    	//como si fuesen arrays
+
+    	//Pero la mejor forma es traer los datos como propiedades del objeto
+    	$messages = Message::all();	
+
 	    return view('welcome',[
 	    	'messages' => $messages
 	    ]);
