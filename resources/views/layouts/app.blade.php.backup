@@ -28,7 +28,7 @@
                 </div>
             @endif
 
-            <div class="container">
+            <div id="app" class="container">
                 <!--bloque de contenido en Blade-->
                 @yield('content')
 

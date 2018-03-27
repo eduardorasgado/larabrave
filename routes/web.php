@@ -25,4 +25,4 @@ Route::post('/messages/create', 'MessagesController@create');
 //php artisan make:auth
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

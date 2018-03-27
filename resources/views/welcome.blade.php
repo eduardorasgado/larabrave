@@ -3,18 +3,10 @@
 @section('content')
    <div class="jumbotron text-center">
        <h1>Larabrave</h1>
-       <nav>
-           <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">Inicio</a>
-                </li>
-                
-           </ul>
-       </nav>
    </div>
 
    <!--formulario-->
-   <div class="row">
+   <div class="row mb-4">
      <form class="" action="{{ url('/messages/create') }}" method="POST">
       <div class="form-group">
         
@@ -38,11 +30,28 @@
    </div>
 
    <div class="row">
+        
         @forelse($messages as $message)
+            <!--div class="col-6">
+                <img class="img-thumbnail" src="{ $message->image }}">
+                <p class="card-text">{ $message->content }} <a href="/messages/{ $message->id }}">Leer mas</a></p>
+            </div-->
+
             <div class="col-6">
-                <img class="img-thumbnail" src="{{ $message->image }}">
-                <p class="card-text">{{ $message->content }} <a href="/messages/{{ $message->id }}">Leer mas</a></p>
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="{{ $message->image }}" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">{{ $message->content }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="/messages/{{ $message->id }}"><button type="button" class="btn btn-sm btn-outline-secondary">Leer mas</button></a>
+                </div>
+                <small class="text-muted">{{ strlen($message->content) }} letras</small>
+              </div>
             </div>
+          </div>
+        </div>
+
         @empty
         <p>Disculpa, algo salió mal, no hay contenido :(</p>
         @endforelse
