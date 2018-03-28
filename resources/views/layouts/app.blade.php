@@ -25,6 +25,14 @@
             #name_navbar {
                 color: gray;
             }
+            .navbar {
+                background-color: #ff9933;
+            }
+
+            .jumbotron{
+                background-color: #ffeecc;
+            }
+            
         </style>
 
 
@@ -32,7 +40,7 @@
 <body>
 
     <div class="container">
-        <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light mb-4 rounded">
+        <nav class="navbar navbar-expand-md fixed-top navbar-light  mb-4 rounded">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,9 +56,18 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Inicio</a>
-                    </li>
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">Inicio</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/{{ Auth::user()->username }}">Mis publicaciones</a>
+                        </li>
+                    @endguest
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -16,13 +16,15 @@
 //con @ nos estamos refiriendo al metodo de la clase
 //del controlador nombrado
 Route::get('/', 'PagesController@home');
+Route::get('/home', 'PagesController@home')->name('home');
 
 Route::get('/messages/{message}', 'MessagesController@show');
-//COn el middleware podemos proteger la ruta
+
+//Con el middleware podemos proteger la ruta
 Route::post('/messages/create', 'MessagesController@create')->middleware('auth');
 
 //Estas dos rutas fueron agregadas al hacer
 //php artisan make:auth
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/{username}', 'UsersController@show');

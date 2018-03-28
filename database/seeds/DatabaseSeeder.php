@@ -18,9 +18,23 @@ class DatabaseSeeder extends Seeder
         //mandamos a ejecutar
         //volvemos a ejecutar la query generadora
         //que se uso en el ejemplo en UserFactory con tinker
-        factory(App\Message::class)
-        ->times(100)
-        ->create();
+
+        //Crear 50 fake users 
+        factory(App\User::class)
+        ->times(50)
+        //y para cada user crear 20 mensajes
+        ->create()->each(function(App\User $user){
+            factory(App\Message::class)
+            ->times(20)
+            ->create([
+                //Este array es el user_id 
+                //Así cada mensaje estara vinculado
+                //A su creador
+                'user_id' => $user->id,
+            ]); //create
+        });
+
+        
     }
 }
 /*

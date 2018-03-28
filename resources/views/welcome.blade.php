@@ -1,9 +1,10 @@
 @extends("layouts.app")
 
 @section('content')
-   <div class="jumbotron text-center">
+   <div class="jumbotron text-center" id="main_jumbo">
        <h1 id="main_title">Larabrave</h1>
-       <h4>¿Sobre qué leeremos hoy?</h4>
+       <h5>La comunidad mas grande de escritores en latinoamérica</h5> 
+        <H4>¿Sobre qué leeremos hoy?</h4>
    </div>
 
    <!--formulario-->
@@ -32,20 +33,22 @@
 
    <div class="row">
         
-        @forelse($messages as $message)
-           
-           @include('messages.message')
-        
-        @empty
-        <p>Disculpa, algo salió mal, no hay contenido :(</p>
-        @endforelse
+    @forelse($messages as $message)
+     <div class="col-6">
+       @include('messages.message')
+     </div>
+      @empty
+      <p>Disculpa, algo salió mal, no hay contenido :(</p>
+      @endforelse
 
-        {{-- Para la paginacion de la web, tomando los datos de paginate()--}}
-        @if(count($messages))
-          <!--margin top y margin x en class-->
-          <div class="mt-2 mx-auto">
-            {{ $messages->links('pagination::bootstrap-4')}}
-          </div>
-        @endif
+      {{-- Para la paginacion de la web, tomando los datos de paginate()--}}
+      @if(count($messages))
+        <!--margin top y margin x en class-->
+        <div class="mt-2 mx-auto">
+          {{ $messages->links('pagination::bootstrap-4')}}
+      </div>
+
+    @endif
+   
    </div>
 @endsection

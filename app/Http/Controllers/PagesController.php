@@ -26,8 +26,16 @@ class PagesController extends Controller
     	//de arrays, por eso en la view podemos tomar los datos
     	//como si fuesen arrays
 
-    	//Pero la mejor forma es traer los datos como propiedades del objeto
-    	$messages = Message::paginate(10);
+    	//Pero la mejor forma es traer los datos como propiedades del objeto---->
+
+        //ordenado descendiente y paginado
+        //Notese que se tiene que permanecer, si se
+        //quiere paginar aun si en User.php
+        //messages() ya hayy un orderBy, esto debido a 
+        //que aqui no se manda a llamar a 
+        //$user->messages de hasMany
+        $messages = Message::latest()->paginate(10);
+        //paginate es un builder method de eloquent
 
         //Extraccion de numero de palabras por mensaje
         $mess_words_array =  [];

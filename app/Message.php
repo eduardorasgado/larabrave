@@ -44,6 +44,7 @@ class Message extends Model
 	{
 		//toma este modelo y busca la relacion con otro 
 		//modelo, en el ejemplo es User 
+		//1 a 1
 		return $this->belongsTo(User::class);
 	}
 

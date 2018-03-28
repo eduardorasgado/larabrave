@@ -19,10 +19,23 @@ class MessagesController extends Controller
     	//NOtFoundHttpException o 404
 
     	//$message = Message::find($id);
-
-    	//messages es carpeta,show es archivo
+        $words = [];
+        $mess_words = 1;
+        $mess = $message->content;
+        $m_length = strlen($mess)-1;
+        foreach (range(0,$m_length) as $i) 
+        {
+            if ($mess[$i] == ' ')
+            {
+                $mess_words ++;
+            }
+        }
+        $words[$message->id] = $mess_words;  
+    	
+        //messages es carpeta,show es archivo
     	return view('messages.show', [
-    		'message' => $message
+    		'message' => $message,
+            'words' =>$words,
     	]);
     } //show
 
