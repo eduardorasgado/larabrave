@@ -27,10 +27,28 @@ class PagesController extends Controller
     	//como si fuesen arrays
 
     	//Pero la mejor forma es traer los datos como propiedades del objeto
-    	$messages = Message::paginate(10);	
+    	$messages = Message::paginate(10);
+
+        //Extraccion de numero de palabras por mensaje
+        $mess_words_array =  [];
+        foreach ($messages as $message) {
+            # code...
+            $mess_words = 1;
+            $mess = $message->content;
+            $m_length = strlen($mess)-1;
+            foreach (range(0,$m_length) as $i) 
+            {
+                if ($mess[$i] == ' ')
+                {
+                    $mess_words ++;
+                }
+            }
+            $mess_words_array[$message->id] = $mess_words;
+        }	
 
 	    return view('welcome',[
-	    	'messages' => $messages
+	    	'messages' => $messages,
+            'words' => $mess_words_array,
 	    ]);
     } //home
 

@@ -39,4 +39,12 @@ class Message extends Model
 	//guarded
 	protected $guarded = [];
 
+	//Esta funcion devuelve al dueño de una llave foranea
+	public function user()
+	{
+		//toma este modelo y busca la relacion con otro 
+		//modelo, en el ejemplo es User 
+		return $this->belongsTo(User::class);
+	}
+
 }

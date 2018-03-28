@@ -14,6 +14,19 @@
     <!--Usando CSS de Bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+        <style type="text/css">
+            #main_title {
+                font-weight: bold;
+            }
+
+            #name_link {
+                color: green;
+            }
+            #name_navbar {
+                color: gray;
+            }
+        </style>
+
 
 </head>
 <body>
@@ -56,7 +69,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registrarse</a></li>
                     @else
                         <li class=" nav-item dropdown mt-2">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                            <a id="name_navbar" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
