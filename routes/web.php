@@ -18,8 +18,8 @@
 Route::get('/', 'PagesController@home');
 
 Route::get('/messages/{message}', 'MessagesController@show');
-
-Route::post('/messages/create', 'MessagesController@create');
+//COn el middleware podemos proteger la ruta
+Route::post('/messages/create', 'MessagesController@create')->middleware('auth');
 
 //Estas dos rutas fueron agregadas al hacer
 //php artisan make:auth

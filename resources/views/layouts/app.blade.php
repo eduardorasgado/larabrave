@@ -55,9 +55,9 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Entrar</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registrarse</a></li>
                     @else
-                        <li class=" nav-item dropdown">
+                        <li class=" nav-item dropdown mt-2">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu">

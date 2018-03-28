@@ -37,9 +37,12 @@ class MessagesController extends Controller
     	//Se encuentra en app/Http/Request\CreateMessageRequest
     	//Y se creo con artisan
 
+        $user = $request->user();
+
     	$message = Message::create([
     		'content' => $request->input('message'),
-    		'image' => 'http://placeimg.com/600/338/any?'.mt_rand(0,1000)
+    		'image' => 'http://placeimg.com/600/338/any?'.mt_rand(0,1000),
+            'user_id' => $user->id,
     	]);
 
     	//dd($message);
