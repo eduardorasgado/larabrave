@@ -183,7 +183,9 @@
 
     <!--JS del API login de facebook de facebook-->
     <!--developers.facebook.com-->
-        <script>
+        <!--script>
+            /*FB espera que los datos delicados esten en un archivo llamado
+            config/services.php*/
           window.fbAsyncInit = function() {
             FB.init({
               appId      : '1900316153335879',
@@ -203,6 +205,6 @@
              js.src = "https://connect.facebook.net/en_US/sdk.js";
              fjs.parentNode.insertBefore(js, fjs);
            }(document, 'script', 'facebook-jssdk'));
-    </script>
+    </script-->
 </body>
 </html>

@@ -30,6 +30,10 @@ Route::post('/messages/create', 'MessagesController@create')->middleware('auth')
 //php artisan make:auth
 Auth::routes();
 
+//Rutas de facebook
+Route::get('/auth/facebook', 'SocialAuthController@facebook');
+Route::get('auth/facebook/callback', 'SocialAuthController@callback');
+
 //mostrar usuario especifico
 Route::get('/{username}', 'UsersController@show');
 
@@ -44,3 +48,6 @@ Route::get('/{username}/followers', 'UsersController@followers');
 
 //dejarde seguir
 Route::post('/{username}/unfollow','UsersController@unfollow')->middleware('auth');
+
+//Hay un bug en:
+// '/index'

@@ -34,5 +34,16 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    //agregado a mano para facebook
+    //Esto funciona pero en produccion se debe
+    //pasar a .env por seguridad
+    'facebook' => [
+        'client_id' => env('FACEBOOK_ID'),
+        'client_secret' => env('FACEBOOK_SECRET'),
+        //debe estar en https e igual q en developers
+        //facebook, http lo podemos conseguir con
+        //ngrok en localhost en desarrollo
+        'redirect' => 'https://1f650a42.ngrok.io/auth/facebook/callback',
+    ],
 
 ];
