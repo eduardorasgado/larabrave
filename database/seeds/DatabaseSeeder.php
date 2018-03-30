@@ -20,10 +20,14 @@ class DatabaseSeeder extends Seeder
         //que se uso en el ejemplo en UserFactory con tinker
 
         //Crear 50 fake users 
-        factory(App\User::class)
+        $users = factory(App\User::class)
         ->times(50)
         //y para cada user crear 20 mensajes
-        ->create()->each(function(App\User $user){
+        ->create();
+
+        //funcion anonima que hace algo por cada user
+        $users->each(function(App\User $user) use ($users)
+        {
             factory(App\Message::class)
             ->times(20)
             ->create([
@@ -31,7 +35,13 @@ class DatabaseSeeder extends Seeder
                 //Así cada mensaje estara vinculado
                 //A su creador
                 'user_id' => $user->id,
-            ]); //create
+            ]); //cierre del factory
+            //accede al metodo ejecutandolo para
+            //poder modificar los campos del user
+            $user->follows()->sync(
+                //random es una propiedad especial de users
+                $users->random(10)
+            );
         });
 
         

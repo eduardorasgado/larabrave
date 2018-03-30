@@ -10,7 +10,7 @@ class UsersController extends Controller
     //
     public function show($username)
     {
-    	$user = User::where('username',$username)->first();
+    	$user = $this->findByUsername($username);
 
     	$messages = $user->messages;
     	//Extraccion de numero de palabras por mensaje
@@ -37,5 +37,61 @@ class UsersController extends Controller
     		'user_mess' => $user_mess,
     		'words' => $mess_words_array,
     	]);
+    }
+
+    public function follow($username, Request $request)
+    {
+    	//a quien seguire
+    	$user = $this->findByUsername($username);
+
+    	//dar usuario logueado(yo)
+    	$me = $request->user();
+    	
+    	//incluir a quien seguire en mi campo
+    	//modificar algun dato: con follows()
+    	$me->follows()->attach($user);
+
+    	//llevar al usuario que estamos siguiendo
+    	return redirect("/$username")
+    			->withSuccess("Ahora sigues a $user->name");
+    }
+
+    public function unfollow($username, Request $request)
+    {
+    	//a quien dejare de seguir
+    	$user = $this->findByUsername($username);
+
+    	//dar usuario logueado(yo)
+    	$me = $request->user();
+    	
+    	//incluir a quien deseguire en mi campo
+    	$me->follows()->detach($user);
+
+    	//llevar al usuario que estamos siguiendo
+    	return redirect("/$username")
+    			->withSuccess("Ahora ya no sigues a $user->name");
+    }
+
+    public function follows($username)
+    {
+    	$user = $this->findByUsername($username);
+
+    	return view('users.follows',[
+    		'user' => $user,
+    	]);
+    }
+
+    public function followers($username)
+    {
+    	$user = $this->findByUsername($username);
+
+    	return view('users.followers',[
+    		'user' => $user,
+    	]);
+    }
+
+    private function findByUsername($username)
+    {
+    	return User::where('username',$username)->first();
     }
 }

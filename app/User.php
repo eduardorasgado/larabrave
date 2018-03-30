@@ -34,4 +34,31 @@ class User extends Authenticatable
         //1 a muchos 
         return $this->hasMany(Message::class)->orderBy('created_at', 'desc');
     }
+
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'followed_id');
+        //tabla,foreign,related
+        //Busca los otros usarios donde yo soy el user_id
+        //y followed son los otros
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class,'followers', 'followed_id', 'user_id');
+        //tabla, foreign, related
+         //Busca los otros usarios donde yo soy el followed_id
+        //y user_id son los otros
+    }
+
+    public function isFollowing(User $user)
+    {
+        //Estamos accediendo directamente a un método
+        //interno de follows que es contains de la
+        //relacion belongsToMany
+        //traer algun dato: con follows
+        return !$this->follows->contains($user);
+
+    }
+
 }

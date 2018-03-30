@@ -8,6 +8,9 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
+
+Socialite y tinker fueron instalados con composer y agregados a config/app.php en providers y Socialite facades a aliases también
+
 |
 */
 
@@ -27,4 +30,17 @@ Route::post('/messages/create', 'MessagesController@create')->middleware('auth')
 //php artisan make:auth
 Auth::routes();
 
+//mostrar usuario especifico
 Route::get('/{username}', 'UsersController@show');
+
+////para la accion de seguir
+Route::post('/{username}/follow','UsersController@follow')->middleware('auth');
+
+//lleva a la pagina de siguiendo a
+Route::get('/{username}/follows', 'UsersController@follows');
+
+//lleva a la pagina de seguidores
+Route::get('/{username}/followers', 'UsersController@followers');
+
+//dejarde seguir
+Route::post('/{username}/unfollow','UsersController@unfollow')->middleware('auth');

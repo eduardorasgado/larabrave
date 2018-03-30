@@ -4,7 +4,7 @@
    <div class="jumbotron text-center" id="main_jumbo">
        <h1 id="main_title">Larabrave</h1>
        <h5>La comunidad mas grande de escritores en latinoamérica</h5> 
-        <H4>¿Sobre qué leeremos hoy?</h4>
+        <h4 id="main-phrase">¿Sobre qué leeremos hoy?</h4>
    </div>
 
    <!--formulario-->

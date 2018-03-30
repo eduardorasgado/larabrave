@@ -11,19 +11,33 @@
     <title>@yield('title', 'Bienvenido a Larabrave')</title>
 
     <!-- Styles -->
+        <!--Google Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Oswald|Roboto|Playfair+Display" rel="stylesheet"> 
+
     <!--Usando CSS de Bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <style type="text/css">
+            /*texto*/
             #main_title {
                 font-weight: bold;
+                font-family: 'IBM Plex Mono', monospace;
+            }
+
+            #main-phrase {
+                font-family: 'Playfair Display', serif;
             }
 
             #name_link {
                 color: green;
+                font-family: 'Oswald', sans-serif;
             }
             #name_navbar {
-                color: gray;
+                color: black;
+                font-family: 'Playfair Display', serif;
+            }
+            #h-name {
+                font-family: 'Playfair Display', serif;
             }
             .navbar {
                 background-color: #ff9933;
@@ -31,6 +45,36 @@
 
             .jumbotron{
                 background-color: #ffeecc;
+            }
+
+            .card-text {
+                font-family: 'IBM Plex Mono', monospace;
+            }
+
+            .text-muted {
+                font-family: 'Oswald', sans-serif;
+            }
+
+            .navbar-brand {
+                font-family: 'Oswald', sans-serif;
+            }
+            .nav-link {
+                font-family: 'Oswald', sans-serif;
+            }
+            h5 {
+                font-family: 'Playfair Display', serif;
+            }
+            input.name["message"] {
+                font-family: 'Oswald', sans-serif;
+            }
+
+            /*Imagenes*/
+
+            .imgRedonda {
+                width: 60px;
+                height: 60px;
+                border-radius: 30px;
+                border:5px solid #666;
             }
             
         </style>
@@ -92,15 +136,20 @@
 
                             <div class="dropdown-menu">
 
+                                    <a class="dropdown-item" href="/{{ Auth::user()->username }}">
+                                        Perfil
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         Salir
                                     </a>
+
                                     <!--form oculto que hara el submit de logout-->
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
-                                    </form>
+                                    </form>                             
                             </div>
                         </li>
                     @endguest
@@ -131,5 +180,29 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!--JS del API login de facebook de facebook-->
+    <!--developers.facebook.com-->
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '1900316153335879',
+              cookie     : true,
+              xfbml      : true,
+              version    : '{latest-api-version}'
+            });
+              
+            FB.AppEvents.logPageView();   
+              
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "https://connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+    </script>
 </body>
 </html>
