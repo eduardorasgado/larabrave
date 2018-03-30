@@ -9,6 +9,8 @@ class CreateSocialProfilesTable extends Migration
     /**
      * Run the migrations.
      *
+     Crea la tabla social_profiles
+     despues de aplicar php artisan migrate
      * @return void
      */
     public function up()
@@ -16,6 +18,12 @@ class CreateSocialProfilesTable extends Migration
         Schema::create('social_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+
+            $table->integer('user_id')->unsigned();
+
+            $table->string('social_id');
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

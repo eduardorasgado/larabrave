@@ -61,4 +61,11 @@ class User extends Authenticatable
 
     }
 
+    public function socialProfiles()
+    {
+        //un usuario tiene muchos perfiles
+        //pero el perfil pertenece solo a un usuario
+        return $this->hasMany(SocialProfile::class);
+    }
+
 }

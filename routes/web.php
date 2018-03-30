@@ -33,6 +33,8 @@ Auth::routes();
 //Rutas de facebook
 Route::get('/auth/facebook', 'SocialAuthController@facebook');
 Route::get('auth/facebook/callback', 'SocialAuthController@callback');
+//register con facebook
+Route::post('/auth/facebook/register','SocialAuthController@register');
 
 //mostrar usuario especifico
 Route::get('/{username}', 'UsersController@show');
@@ -48,6 +50,7 @@ Route::get('/{username}/followers', 'UsersController@followers');
 
 //dejarde seguir
 Route::post('/{username}/unfollow','UsersController@unfollow')->middleware('auth');
+
 
 //Hay un bug en:
 // '/index'

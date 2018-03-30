@@ -43,7 +43,7 @@ return [
         //debe estar en https e igual q en developers
         //facebook, http lo podemos conseguir con
         //ngrok en localhost en desarrollo
-        'redirect' => 'https://1f650a42.ngrok.io/auth/facebook/callback',
+        'redirect' => 'https://5340bd20.ngrok.io/auth/facebook/callback',
     ],
 
 ];
