@@ -19,19 +19,8 @@ class MessagesController extends Controller
     	//NOtFoundHttpException o 404
 
     	//$message = Message::find($id);
-        $words = [];
-        $mess_words = 1;
-        $mess = $message->content;
-        $m_length = strlen($mess)-1;
-        foreach (range(0,$m_length) as $i) 
-        {
-            if ($mess[$i] == ' ')
-            {
-                $mess_words ++;
-            }
-        }
-        $words[$message->id] = $mess_words;  
-    	
+        $words = $this->countWords([$message]);
+
         //messages es carpeta,show es archivo
     	return view('messages.show', [
     		'message' => $message,
@@ -55,8 +44,8 @@ class MessagesController extends Controller
 
     	$message = Message::create([
     		'content' => $request->input('message'),
-            //va al archivo filesystems
-            //y se hace un php artisan storage:link
+            //va al archivo filesystems y se corrobora
+            //y se tiene que hacer un php artisan storage:link
     		'image' => $image->store('messages', 'public'),
             'user_id' => $user->id,
     	]);
@@ -67,4 +56,42 @@ class MessagesController extends Controller
     	return redirect('/messages/'.$message->id);
 
     } //create
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        //BUsqueda en la BD tabla messages y columna content
+        //LIKE: BUscar parecidos, %$quey% significa que en 
+        //cualquier parte del mensaje estara el contenido
+        //buscado
+        $messages = Message::where('content', 'LIKE', "%$query%")->get();
+
+        $words = $this->countWords($messages);
+
+        return view('messages.index', [
+            'messages' => $messages,
+            'words' => $words,
+        ]);
+    }
+
+    private function countWords($messages)
+    {
+        $mess_words_array =  [];
+        foreach ($messages as $message) {
+            # code...
+            $mess_words = 1;
+            $mess = $message->content;
+            $m_length = strlen($mess)-1;
+            foreach (range(0,$m_length) as $i) 
+            {
+                if ($mess[$i] == ' ')
+                {
+                    $mess_words ++;
+                }
+            }
+            $mess_words_array[$message->id] = $mess_words;
+        }
+        return $mess_words_array;   
+    }
 }

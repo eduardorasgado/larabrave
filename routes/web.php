@@ -26,6 +26,10 @@ Route::get('/auth/facebook', 'SocialAuthController@facebook');
 Route::get('auth/facebook/callback', 'SocialAuthController@callback');
 //register con facebook
 Route::post('/auth/facebook/register','SocialAuthController@register');
+
+//-----------------------------------------------
+//Busqueda
+Route::get('/messages/search','MessagesController@search');
 //--------------------------------------------------------------------
 
 //con @ nos estamos refiriendo al metodo de la clase

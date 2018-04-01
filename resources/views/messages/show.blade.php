@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<a href="{{ url('/') }}"><button class="btn btn-outline-secondary">Regresar</button></a>
+	<a href="@if(url()->previous() != Request::url()) {{ url()->previous() }} @else / @endif"><button class="btn btn-outline-secondary">Regresar</button></a>
 	<br><br>
 	@if ($message)
 		<div class="col-6">

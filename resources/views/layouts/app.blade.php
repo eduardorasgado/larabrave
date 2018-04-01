@@ -100,14 +100,12 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">Inicio</a>
+                    </li>
                     @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">Inicio</a>
-                        </li>
+                        
                     @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">Inicio</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/{{ Auth::user()->username }}">Mis publicaciones</a>
                         </li>
@@ -118,9 +116,9 @@
 
                 <!--Campo Search--> 
                 <ul class="nav navbar-nav ml-auto">
-                    <form class="form-inline mt-2 mt-md-0">
-                      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                    <form class="form-inline mt-2 mt-md-0" action="/messages/search">
+                      <input class="form-control mr-sm-2" type="text" placeholder="Un tema interesante" aria-label="Search" name="query" required>
+                      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                     &nbsp;&nbsp;
 

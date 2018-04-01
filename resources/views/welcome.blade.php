@@ -9,6 +9,7 @@
 
    <!--formulario-->
    <div class="row md-4">
+        <!--multipart/form-data es importante para subir los archivos al server-->
        <form class="" action="{{ url('/messages/create') }}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           

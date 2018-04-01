@@ -17,6 +17,7 @@ class UsersController extends Controller
 
     	$user = $this->findByUsername($username);
 
+        //recurrir metodo de modelo Users
     	$messages = $user->messages;
     	//Extraccion de numero de palabras por mensaje
         $mess_words_array =  [];
