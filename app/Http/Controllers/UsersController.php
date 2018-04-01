@@ -11,7 +11,10 @@ class UsersController extends Controller
 {
     //
     public function show($username)
-    {
+    {   
+        //para comprobar proteccion contra error 500
+        //throw new \Exception("Error!!");
+
     	$user = $this->findByUsername($username);
 
     	$messages = $user->messages;
@@ -154,6 +157,8 @@ class UsersController extends Controller
 
     private function findByUsername($username)
     {
-        return User::where('username',$username)->first();
+        //metodo FirstOrFail siempre devuelve un usuario y si
+        //no lo encuentra da una excepcion tipo not found
+        return User::where('username',$username)->firstOrFail();
     }
 }

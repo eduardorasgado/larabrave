@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+	<a href="{{ url()->previous() }}"><button class="btn btn-outline-secondary">Regresar</button>
 	{{--excepts filtra e implode(propiedad_interna_de_objeto, separador_interno) convierte una coleccion a un string--}}
 	<h1 id="h-name">Conversación con {{ $conversation->users->except($user->id)->implode('name',', ') }}</h1>
 
