@@ -65,13 +65,16 @@ class MessagesController extends Controller
         //LIKE: BUscar parecidos, %$quey% significa que en 
         //cualquier parte del mensaje estara el contenido
         //buscado
-        $messages = Message::where('content', 'LIKE', "%$query%")->get();
+        $messages = Message::where('content', 'LIKE', "%$query%")->paginate(10);
 
+        //conteo de palabras por mensaje
         $words = $this->countWords($messages);
 
         return view('messages.index', [
             'messages' => $messages,
             'words' => $words,
+            //pasando la query para el paginado
+            'query' => $query,
         ]);
     }
 

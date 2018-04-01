@@ -20,6 +20,9 @@ Socialite y tinker fueron instalados con composer y agregados a config/app.php e
 //php artisan make:auth
 Auth::routes();
 
+//Sincronizar el ngrok en config/services.php
+//y ngrok http 8000 
+//primero
 //Rutas de facebook
 Route::get('/auth/facebook', 'SocialAuthController@facebook');
 

@@ -169,8 +169,10 @@ return [
          */
         //Esto hace que en todo el codigo laravel
         //ESten disponibles estos contenidos
+        //Se agregan a mano
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -231,7 +233,9 @@ return [
         //Se agrega esto con Socialite instalado con
         //composer
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        //tambien despues de agregar este alias se ejecuta
+        //php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
