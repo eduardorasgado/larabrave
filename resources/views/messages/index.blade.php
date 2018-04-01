@@ -17,7 +17,7 @@
 	@if(count($messages))
         <!--margin top y margin x en class-->
         <div class="mt-2 mx-auto">
-        	{{--Incluir query en todo el paginado--}}
+        	{{--Incluir query en todo el paginadoo--}}
           {{ $messages->appends(['query' => $query])->links('pagination::bootstrap-4')}}
          </div>
     @endif
