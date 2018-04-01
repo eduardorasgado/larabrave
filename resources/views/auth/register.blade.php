@@ -81,11 +81,17 @@
                                     Registrarse
                                 </button>
                             </div>
-                        </div>
+                        </div>   
                     </form>
-                </div>
-            </div>
+                </div>  
+            </div>   
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-4">
+            <a href="/auth/facebook" class="btn btn-primary">Registro con facebook</a>
+        </div>
+    </div>
+    
 
 @endsection

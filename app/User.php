@@ -57,7 +57,7 @@ class User extends Authenticatable
         //interno de follows que es contains de la
         //relacion belongsToMany
         //traer algun dato: con follows
-        return !$this->follows->contains($user);
+        return $this->follows->contains($user);
 
     }
 

@@ -40,6 +40,8 @@ class SocialAuthController extends Controller
     	//Le dice al modelo->metodo socialProfiles
     	//Que si tiene al menos una red social
     	//me devuelva el resultde la funcion
+    			//AUN PODEMOS MEJORAR RENDIMIENTO
+    			//VER COMENTARIO EN LOGIN CON FACEBOOK
     	$existing = User::whereHas('socialProfiles', function($query) use ($user){
     		//Si hay un id en la DB con el id
     		//de facebook

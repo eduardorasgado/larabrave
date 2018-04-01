@@ -15,32 +15,54 @@ Socialite y tinker fueron instalados con composer y agregados a config/app.php e
 */
 
 //RUTAS
-
-//con @ nos estamos refiriendo al metodo de la clase
-//del controlador nombrado
-Route::get('/', 'PagesController@home');
-Route::get('/home', 'PagesController@home')->name('home');
-
-Route::get('/messages/{message}', 'MessagesController@show');
-
-//Con el middleware podemos proteger la ruta
-Route::post('/messages/create', 'MessagesController@create')->middleware('auth');
-
-//Estas dos rutas fueron agregadas al hacer
+//--------------------------------------------------------------------
+//Estas dos rutas fueron agregadas al hacer(Auth y home)
 //php artisan make:auth
 Auth::routes();
 
 //Rutas de facebook
 Route::get('/auth/facebook', 'SocialAuthController@facebook');
+
 Route::get('auth/facebook/callback', 'SocialAuthController@callback');
 //register con facebook
 Route::post('/auth/facebook/register','SocialAuthController@register');
+//--------------------------------------------------------------------
 
-//mostrar usuario especifico
+//con @ nos estamos refiriendo al metodo de la clase
+//del controlador nombrado
+Route::get('/', 'PagesController@home');
+Route::get('/home', 'PagesController@home')->name('home');
+//--------------------------------------------------------------------
+
+//Post especifico
+Route::get('/messages/{message}', 'MessagesController@show');
+
+
+//--------------------------------------------------------------------
+
+//grupo de filtrado
+Route::group(['middleware' => 'auth'], function(){
+	//Con el middleware podemos proteger la ruta
+	Route::post('/messages/create', 'MessagesController@create');
+
+	//Envio de mensaje privado
+	Route::post('/{username}/dms','UsersController@sendPrivateMessage');
+
+	//Es posible crear un controller p/conversations
+	Route::get('/conversations/{conversation}','UsersController@showConversation');
+	
+	////para la accion de seguir
+	Route::post('/{username}/follow','UsersController@follow');
+
+	//dejar de seguir
+	Route::post('/{username}/unfollow','UsersController@unfollow');
+
+
+});
+//------------------------------------------------------------------
+
+//mostrar usuario especifico, y sus mensajes
 Route::get('/{username}', 'UsersController@show');
-
-////para la accion de seguir
-Route::post('/{username}/follow','UsersController@follow')->middleware('auth');
 
 //lleva a la pagina de siguiendo a
 Route::get('/{username}/follows', 'UsersController@follows');
@@ -48,9 +70,6 @@ Route::get('/{username}/follows', 'UsersController@follows');
 //lleva a la pagina de seguidores
 Route::get('/{username}/followers', 'UsersController@followers');
 
-//dejarde seguir
-Route::post('/{username}/unfollow','UsersController@unfollow')->middleware('auth');
-
-
+//--------------------------------------------------------------------
 //Hay un bug en:
 // '/index'

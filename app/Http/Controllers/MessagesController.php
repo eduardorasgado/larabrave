@@ -51,10 +51,13 @@ class MessagesController extends Controller
     	//Y se creo con artisan
 
         $user = $request->user();
+        $image = $request->file('image');
 
     	$message = Message::create([
     		'content' => $request->input('message'),
-    		'image' => 'http://placeimg.com/600/338/any?'.mt_rand(0,1000),
+            //va al archivo filesystems
+            //y se hace un php artisan storage:link
+    		'image' => $image->store('messages', 'public'),
             'user_id' => $user->id,
     	]);
 

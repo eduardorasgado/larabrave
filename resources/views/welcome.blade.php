@@ -9,7 +9,7 @@
 
    <!--formulario-->
    <div class="row md-4">
-       <form class="" action="{{ url('/messages/create') }}" method="POST">
+       <form class="" action="{{ url('/messages/create') }}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           
           {{-- funcion que provee laravel para generar un token --}}
@@ -26,7 +26,8 @@
               <div class="invalid-feedback">{{ $error }}</div>
             @endforeach
           @endif
-
+          {{--Input del file--}}
+            <input class="form-control-file" type="file" name="image">          
         </div>
      </form>
    </div>

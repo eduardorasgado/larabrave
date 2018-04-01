@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -25,6 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //Compuerta de filtro 
+        //gate llamada dms
+        Gate::Define('dms', function(User $user, User $other){
+            return $user->isFollowing($other) && $other->isFollowing($user);
+            //true si ambos users se siguen mutuamente
+        });
     }
 }

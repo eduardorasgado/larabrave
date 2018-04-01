@@ -48,4 +48,16 @@ class Message extends Model
 		return $this->belongsTo(User::class);
 	}
 
+	public function getImageAttribute($image)
+	{
+		//SI hay imagen devuelvo link ensamblado
+		//Si hay no imagen devuelvo hhtp
+		if (!$image || starts_with($image,'http') )
+		{
+			return $image;
+		}
+
+		return \Storage::disk('public')->url($image);
+	}
+
 }
