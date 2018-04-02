@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 //Debemos traerla a mano
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 
 //Todas las clases de test se conocen como test Suit
 
@@ -16,6 +17,9 @@ class UsersTest extends TestCase
 	//Con esta funcion damos un rollback a los datos 
 	//metidos en la base de datos por el tester
 	use DatabaseTransactions;
+
+	//threat que permite preguntar a la DB por cambios
+	use InteractsWithDatabase;
 
 	public function testCanSeeUserPage()
 	{
@@ -37,5 +41,24 @@ class UsersTest extends TestCase
 
 		//comprobar si hubo una autentificacion
 		$this->assertAuthenticatedAs($user);
+	}
+
+	public function testCanFollow()
+	{
+		$user = factory(User::class)->create();
+		$other = factory(User::class)->create();
+
+		//actingAs loguea en el test al user para poder seguir
+		//y no tener que sobrecrear un test ya hecho como
+		//en testCanLogin
+		$response = $this->actingAs($user)->post($other->username.'/follow');
+
+		//interactuando con la BD para verificar relacion
+		//en tabla followers con columnas user_id y followed_id
+		$this->assertDatabaseHas('followers', [
+			'user_id' => $user->id,
+			'followed_id'=> $other->id,
+		]);
+
 	}
 }
