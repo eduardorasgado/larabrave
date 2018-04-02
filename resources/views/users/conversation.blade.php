@@ -10,20 +10,20 @@
 	<h1 id="h-name">Conversación con {{ $conversation->users->except($user->id)->implode('name',', ') }}</h1>
 
 	<div class="jumbotron">
-		@foreach($conversation->privateMessages as $message)
+		@foreach($conversation->privateMessages as $privmessage)
 			<div class="card">
 				<div class="card-header">
-					{{ $message->user->name }} dijo...
+					{{ $privmessage->user->name }} dijo...
 				</div>
 					<div class="row">
 						<div class="col-1">
 						</div>
 						
 						<div class=" card-body col-6">
-								{{ $message->message }}	
+								{{ $privmessage->message }}	
 						</div>
 						<div class="footer text-muted small">
-							{{ $message->created_at }}
+							{{ $privmessage->created_at }}
 						</div>				
 					</div>
 				</div>
