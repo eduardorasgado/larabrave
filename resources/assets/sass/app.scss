@@ -6,4 +6,9 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//Aqui cambiamos de "~bootstrap-sass/assets/stylesheets/
+//  bootstrap"; a:
+
+@import "~bootstrap/scss/bootstrap";
+
+//y borramos variables en _Variables.scss

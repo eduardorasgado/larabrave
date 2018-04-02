@@ -15,7 +15,10 @@
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Oswald|Roboto|Playfair+Display" rel="stylesheet"> 
 
     <!--Usando CSS de Bootstrap-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"-->
+
+    <!--Luego de instalar bootstrap con npm y webpack.mix-->
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
 
         <style type="text/css">
             /*texto*/
@@ -169,40 +172,21 @@
     </footer>
 </div>
     <!-- Scripts -->
+    
     <!--JQUERY desde: http://code.jquery.com/-->
-        <script
+        <!--script
                   src="http://code.jquery.com/jquery-3.3.1.min.js"
                   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                  crossorigin="anonymous"></script>
+                  crossorigin="anonymous"></script-->
     <!--JS de Bootstrap-->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script-->
 
-    <!--JS del API login de facebook de facebook-->
-    <!--developers.facebook.com-->
-        <!--script>
-            /*FB espera que los datos delicados esten en un archivo llamado
-            config/services.php*/
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId      : '1900316153335879',
-              cookie     : true,
-              xfbml      : true,
-              version    : '{latest-api-version}'
-            });
-              
-            FB.AppEvents.logPageView();   
-              
-          };
+    <!--Luego de instalar webpack-mix y boostrap4 con npm-->
 
-          (function(d, s, id){
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) {return;}
-             js = d.createElement(s); js.id = id;
-             js.src = "https://connect.facebook.net/en_US/sdk.js";
-             fjs.parentNode.insertBefore(js, fjs);
-           }(document, 'script', 'facebook-jssdk'));
-    </script-->
+    <script src="{{ mix('js/app.js') }}"></script>
+    
+    
 </body>
 </html>

@@ -44,6 +44,7 @@ return [
         //facebook, http lo podemos conseguir con
         //ngrok en localhost en desarrollo
         'redirect' => 'https://5340bd20.ngrok.io/auth/facebook/callback',
+        //esto funciona gracias a la libreria Socialite
     ],
 
 ];
