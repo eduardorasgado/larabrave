@@ -59,7 +59,7 @@
                 </div>
             </form>
             <div class="col-6">
-                <a href="/auth/facebook" class="btn btn-primary">Login con facebook</a>
+                <a href="/auth/facebook" class="btn btn-primary">Entrar con facebook</a>
             </div>
         </div>
     </div>

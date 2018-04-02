@@ -19,8 +19,29 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+//Algolia puede ser usada luego de instalar scout:
+//composer require laravel/scout
+//Añadirla a providers,:
+//Laravel\Scout\ScoutServiceProvider::class,
+//publicarla con:
+///php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
+//e instalar los drivers:
+//composer require algolia/algoliasearch-client-php
+//y añadiendo al modelo su uso sincronizado desde su pagina:
+//https://www.algolia.com
+//y ejecutamos:
+//php artisan scout:import App\\Message
+//NO olvidar pasar ALGOLIA_APP_ID y ALGOLIA_SECRET
+//a .env
+//ver:
+//https://www.algolia.com/doc/api-client/laravel/install/
+use Laravel\Scout\Searchable;
+
 class Message extends Model
 {
+	//de algolia
+	use Searchable;
+
     /*
     Es importante conocer que
     Eloquent busca la tabla en la base de datos de .env
@@ -58,6 +79,15 @@ class Message extends Model
 		}
 
 		return \Storage::disk('public')->url($image);
+	}
+
+	//método que sobreescribimos de use Searchable
+	public function toSearchableArray()
+	{
+		//precargamos los usuarios
+		$this->load('user');
+
+		return $this->toArray();
 	}
 
 }

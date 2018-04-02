@@ -65,7 +65,18 @@ class MessagesController extends Controller
         //LIKE: BUscar parecidos, %$quey% significa que en 
         //cualquier parte del mensaje estara el contenido
         //buscado
-        $messages = Message::where('content', 'LIKE', "%$query%")->paginate(10);
+        //COn with bajamos el numero de querys en la consola
+        //al abrir la view, las precargamos
+        
+        //$messages = Message::with('user')->where('content', 'LIKE', "%$query%")->paginate(10);
+
+        //Busqueda usando Algolia y Lravel Scout
+        $messages = Message::search($query)->paginate(10);
+
+        //precargar usuarios antes de la view
+        //with es cuando cargas una query
+        //load es cuando ya tienes una query
+        $messages->load('user');
 
         //conteo de palabras por mensaje
         $words = $this->countWords($messages);
