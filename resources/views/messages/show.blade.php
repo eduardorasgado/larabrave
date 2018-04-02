@@ -15,5 +15,6 @@
 	@else
 		Ops.. algo ocurrió, intentalo mas tarde
 	@endif
-	
+<!--Implementacion de VueJs-->
+<responses></responses>
 @endsection

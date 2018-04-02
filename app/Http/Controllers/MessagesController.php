@@ -96,6 +96,13 @@ class MessagesController extends Controller
         ]);
     }
 
+    public function responses(Message $message)
+    {
+        //Devolver JSON con un objeto de Eloquent
+        return $message->responses;
+
+    }
+
     private function countWords($messages)
     {
         $mess_words_array =  [];

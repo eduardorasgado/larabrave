@@ -28,20 +28,31 @@ class DatabaseSeeder extends Seeder
         //funcion anonima que hace algo por cada user
         $users->each(function(App\User $user) use ($users)
         {
-            factory(App\Message::class)
+            $messages = factory(App\Message::class)
             ->times(20)
             ->create([
                 //Este array es el user_id 
                 //Así cada mensaje estara vinculado
                 //A su creador
                 'user_id' => $user->id,
-            ]); //cierre del factory
+            ]); //crear mensajes
+
+            $messages->each(function (App\Message $message) use ($users){
+                //para cada mensaje crearles comentarios
+                //entre uno y diez comentarios
+                factory(App\Response::class, random_int(1,10))
+                        ->create([
+                            'message_id' => $message->id,
+                            //dame al asar un user
+                            'user_id' => $users->random(1)->first()->id,
+                        ]); //agregar comentarios a mensaje
+            });
             //accede al metodo ejecutandolo para
             //poder modificar los campos del user
             $user->follows()->sync(
                 //random es una propiedad especial de users
                 $users->random(10)
-            );
+            ); //agregar seguidores a cada usuario
         });
 
         
@@ -57,5 +68,12 @@ Para ejecutar el seeder:
 Si ya creamos antes una n cantidad de datos en la db y queremos hacer un nuevo seeding, podemos borrar todos los datos de la DB y volver a hacer el seed
 
 php artisan migrate:refresh --seed
+
+
+O:
+php artisan migrate:fresh
+php artisan migrate:rollback
+php artisan migrate
+php artisan db:seed
 
 */

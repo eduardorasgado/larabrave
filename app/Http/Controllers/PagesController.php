@@ -37,6 +37,9 @@ class PagesController extends Controller
         $messages = Message::latest()->paginate(10);
         //paginate es un builder method de eloquent
 
+        //precargamos los usuarios
+        $messages->load('user');
+
         //Extraccion de numero de palabras por mensaje
         $mess_words_array =  [];
         foreach ($messages as $message) {

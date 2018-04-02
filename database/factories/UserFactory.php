@@ -43,6 +43,15 @@ $factory->define(App\Message::class, function(Faker $faker){
 	];
 });
 
+$factory->define(App\Response::class, function (Faker $faker){
+	return [
+		'message' => $faker->words(3, true),
+		'created_at' => $faker->dateTimeThisYear,
+		'updated_at' => $faker->dateTimeThisYear,
+	];
+});
+
+
 /*
 
 PARA VER COMO FUNCIONA FACTORY

@@ -90,4 +90,12 @@ class Message extends Model
 		return $this->toArray();
 	}
 
+	//metodo para realcionar los comentarios
+	//de cada mensaje
+	public function responses()
+	{
+		//un post tiene muchos comentarios
+		return $this->hasMany(Response::class)
+				->orderBy("created_at", "desc");
+	}
 }

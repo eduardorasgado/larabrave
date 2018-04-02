@@ -78,5 +78,10 @@ Route::get('/{username}/follows', 'UsersController@follows');
 Route::get('/{username}/followers', 'UsersController@followers');
 
 //--------------------------------------------------------------------
+//Route API: estructura que respeta la estructura
+//de REST
+Route::get('/api/messages/{message}/responses', 'MessagesController@responses');
+
+
 //Hay un bug en:
 // '/index'
