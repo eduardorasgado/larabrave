@@ -11,10 +11,11 @@
 		<div class="col-6">
 			<h1 class="h3">Id del mensaje: {{ $message->id }}</h1>
 			@include('messages.message')
+
+			<!--Implementacion de VueJs haciendo echo de un blade-->
+				<responses :message="{{ $message->id }}"></responses>
 		</div>
 	@else
 		Ops.. algo ocurrió, intentalo mas tarde
 	@endif
-<!--Implementacion de VueJs-->
-<responses></responses>
 @endsection

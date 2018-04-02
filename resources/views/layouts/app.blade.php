@@ -159,7 +159,7 @@
         </nav>
     </div>
 
-    <div class="container">
+    <div id="app" class="container">
         <br><br><br><br>
         @yield('content')
     </div>
@@ -172,7 +172,7 @@
     </footer>
 </div>
     <!-- Scripts -->
-    
+
     <!--JQUERY desde: http://code.jquery.com/-->
         <!--script
                   src="http://code.jquery.com/jquery-3.3.1.min.js"

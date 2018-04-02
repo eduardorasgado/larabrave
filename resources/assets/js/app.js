@@ -15,8 +15,13 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+//responses es la etiqueta que podremos usar en el html
+Vue.component('responses', require('./components/Responses.vue'));
 
+//agregar en el template de laravel(en el global osea layouts.app) un div con id=app
+//en caso de no haber tal id
+//Al final de esto ejecutar: npm run watch
+//ver: https://laraveles.com/componente-vuejs-laravel-5-5/
 const app = new Vue({
     el: '#app'
 });
