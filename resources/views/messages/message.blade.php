@@ -6,7 +6,9 @@
 
 <div class="card mb-4 box-shadow">
   {{--funcion que apunta a tomar la url interna del proyecto ubicada en .env(la base o host) y unirla a la url del archivo en la carpeta mostrada en config/filesystems.php mas el nombre del archivo a subir--}}
-  <img class="card-img-top" src="{{ $message->image }}" alt="Card image cap">
+  @if($message->image != '')
+    <img class="card-img-top" src="{{ $message->image }}" alt="Card image cap">
+  @endif
   <div class="card-body">
     <small class="text-muted float-right">{{ $message->created_at }}</small>
     <br>

@@ -42,11 +42,18 @@ class MessagesController extends Controller
         $user = $request->user();
         $image = $request->file('image');
 
+        if(!$image){
+            $image = '';
+        }
+        else{
+            $image->store('messages', 'public');
+        }
+
     	$message = Message::create([
     		'content' => $request->input('message'),
             //va al archivo filesystems y se corrobora
             //y se tiene que hacer un php artisan storage:link
-    		'image' => $image->store('messages', 'public'),
+    		'image' => $image,
             'user_id' => $user->id,
     	]);
 

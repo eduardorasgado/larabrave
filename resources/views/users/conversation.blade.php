@@ -19,7 +19,7 @@
 						<div class="col-1">
 						</div>
 						
-						<div class=" card-block col-6">
+						<div class=" card-body col-6">
 								{{ $message->message }}	
 						</div>
 						<div class="footer text-muted small">
