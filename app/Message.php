@@ -95,7 +95,8 @@ class Message extends Model
 	public function responses()
 	{
 		//un post tiene muchos comentarios
-		return $this->hasMany(Response::class)
+		return $this->hasMany(Response::class)->with('user')
 				->orderBy("created_at", "desc");
+
 	}
 }

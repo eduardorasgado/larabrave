@@ -49812,6 +49812,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 //Pedido ajax
 //Guardar y pasar a resources/assets/js/app.js
@@ -49859,6 +49862,10 @@ var render = function() {
       _vm._l(_vm.responses, function(response) {
         return _c("div", { staticClass: "mt-2 col-12" }, [
           _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("\n\t\t\t\t\t" + _vm._s(response.user.name) + "\n\t\t\t")
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _vm._v("\n\t\t\t\t" + _vm._s(response.message) + "\n\t\t\t")
             ]),

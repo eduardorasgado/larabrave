@@ -4,6 +4,9 @@
 		
 		<div class="mt-2 col-12" v-for="response in responses">
 			<div class="card">
+				<div class="card-header">
+						{{ response.user.name }}
+				</div>
 				<div class="card-body">
 					{{ response.message }}
 				</div>
