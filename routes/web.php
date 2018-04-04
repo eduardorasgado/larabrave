@@ -64,6 +64,9 @@ Route::group(['middleware' => 'auth'], function(){
 	//dejar de seguir
 	Route::post('/{username}/unfollow','UsersController@unfollow');
 
+	//La API para notificaciones con VueJS
+	Route::get('api/notifications','UsersController@notifications');
+
 
 });
 //------------------------------------------------------------------
@@ -79,9 +82,11 @@ Route::get('/{username}/followers', 'UsersController@followers');
 
 //--------------------------------------------------------------------
 //Route API: estructura que respeta la estructura
-//de REST
+//de REST. API con VueJS
 Route::get('/api/messages/{message}/responses', 'MessagesController@responses');
 
 
 //Hay un bug en:
-// '/index'
+// '/index': Solucionado, error 404, intentar entrar
+//a un user inexistente UsersController aplicacion
+//de FirstOrFail en findByUsername

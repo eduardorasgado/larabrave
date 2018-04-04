@@ -53,21 +53,30 @@ class UsersController extends Controller
 
     	//dar usuario logueado(yo)
     	$me = $request->user();
+
+        if ($me->id != $user->id)
+        {
+                //incluir a quien seguire en mi campo
+            //modificar algun dato: con follows()
+            $me->follows()->attach($user);
+
+            //Funciona porque use Notifiable ya esta desde
+            //la creacion del proyecto, en el model User
+            //hacemos la notificacion (app/Notifications/UserFollowed)
+            //Solamente incluimos al usuario logueado $me
+            $user->notify(new UserFollowed($me));
+            //Al $user notificale que $me lo sigue
+
+            //llevar al usuario que estamos siguiendo
+            return redirect("/$username")
+                    ->withSuccess("Ahora sigues a $user->name");
+        }
+    	else
+        {
+            return redirect("/$username")
+                    ->withSuccess("Ops! No puedes seguirte a ti mismo.");
+        }
     	
-    	//incluir a quien seguire en mi campo
-    	//modificar algun dato: con follows()
-    	$me->follows()->attach($user);
-
-        //Funciona porque use Notifiable ya esta desde
-        //la creacion del proyecto, en el model User
-        //hacemos la notificacion (app/Notifications/UserFollowed)
-        //Solamente incluimos al usuario logueado $me
-        $user->notify(new UserFollowed($me));
-        //Al $user notificale que $me lo sigue
-
-    	//llevar al usuario que estamos siguiendo
-    	return redirect("/$username")
-    			->withSuccess("Ahora sigues a $user->name");
     }
 
     public function unfollow($username, Request $request)
@@ -170,4 +179,10 @@ class UsersController extends Controller
         //no lo encuentra da una excepcion tipo not found
         return User::where('username',$username)->firstOrFail();
     }
+
+    public function notifications(Request $request)
+    {
+        return $request->user()->notifications;
+    }
+
 }

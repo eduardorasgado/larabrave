@@ -1,0 +1,58 @@
+/*texto*/
+            #main_title {
+                font-weight: bold;
+                font-family: 'IBM Plex Mono', monospace;
+            }
+
+            #main-phrase {
+                font-family: 'Playfair Display', serif;
+            }
+
+            #name_link {
+                color: green;
+                font-family: 'Oswald', sans-serif;
+            }
+            #name_navbar {
+                color: black;
+                font-family: 'Playfair Display', serif;
+            }
+            #h-name {
+                font-family: 'Playfair Display', serif;
+            }
+            .navbar {
+                background-color: #ff9933;
+            }
+
+            .jumbotron{
+                background-color: #ffeecc;
+            }
+
+            .card-text {
+                font-family: 'IBM Plex Mono', monospace;
+            }
+
+            .text-muted {
+                font-family: 'Oswald', sans-serif;
+            }
+
+            .navbar-brand {
+                font-family: 'Oswald', sans-serif;
+            }
+            .nav-link {
+                font-family: 'Oswald', sans-serif;
+            }
+            h5 {
+                font-family: 'Playfair Display', serif;
+            }
+            input.name["message"] {
+                font-family: 'Oswald', sans-serif;
+            }
+
+            /*Imagenes*/
+
+            .imgRedonda {
+                width: 60px;
+                height: 60px;
+                border-radius: 30px;
+                border:5px solid #666;
+            }

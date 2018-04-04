@@ -92,6 +92,11 @@ class UserFollowed extends Notification
         debemos retornar los datos de la notificacion a
         guardar para llenar
         el campo data en el item guardado en la DB
+
+        en la DB:
+        data: contiene al que dio follow
+        notifiable_id: contiene el id del usuario seguido
+        es decir, al que le llego la notificacion via email
         */
         return [
             'follower' => $this->follower,

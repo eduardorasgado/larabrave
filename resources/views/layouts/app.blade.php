@@ -14,14 +14,17 @@
         <!--Google Fonts-->
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Oswald|Roboto|Playfair+Display" rel="stylesheet"> 
 
-    <!--Usando CSS de Bootstrap-->
+    <!--Usando CSS de Bootstrap con CDN-->
         <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"-->
 
     <!--Luego de instalar bootstrap con npm y webpack.mix-->
     <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
+    <!--ESte css debe estar registrado en mix-manifest.json para funcionar-->
+    <!--Se resetea el mix con cada npm run-->
+    <!--link rel="stylesheet" type="text/css" href="el mix con la ruta css/archivo.css"-->
 
-        <style type="text/css">
-            /*texto*/
+    <style type="text/css">
+        /*texto*/
             #main_title {
                 font-weight: bold;
                 font-family: 'IBM Plex Mono', monospace;
@@ -79,14 +82,13 @@
                 border-radius: 30px;
                 border:5px solid #666;
             }
-            
-        </style>
-
+    </style>
+    
 
 </head>
 <body>
 
-    <div class="container">
+    <div id="app" class="container">
         <nav class="navbar navbar-expand-md fixed-top navbar-light  mb-4 rounded">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -119,7 +121,7 @@
 
                 <!--Campo Search--> 
                 <ul class="nav navbar-nav ml-auto">
-                    <form class="form-inline mt-2 mt-md-0" action="/messages/search">
+                    <form class="form-inline mt-2 mt-md-0 mr-2" action="/messages/search">
                       <input class="form-control mr-sm-2" type="text" placeholder="Un tema interesante" aria-label="Search" name="query" required>
                       <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
@@ -130,7 +132,19 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Entrar</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registrarse</a></li>
                     @else
-                        <li class=" nav-item dropdown mt-2">
+                        {{--Dropdown Notificaciones--}}
+                        <li class=" nav-item dropdown mt-2 mr-2">
+                            <a id="name_navbar" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                            Notificaciones <span class="caret"></span>
+                            </a>
+
+                            {{--Componente de VueJS--}}
+                            {{--No funciona si no esta dentro de un div con id=app--}}
+                            <notifications :user="{{ Auth::user()->id }}"></notifications>
+                        </li>
+
+                        {{--Dropdown Perfil--}}
+                        <li class=" nav-item dropdown mt-2 mr-2">
                             <a id="name_navbar" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
