@@ -12,8 +12,9 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-
-    'name' => env('APP_NAME', 'Laravel'),
+    //CONFIGURAR en caso de usar mensajeria via 
+    //notifications u otro caso, son metadatos de la app
+    'name' => env('APP_NAME', 'Larabrave'),
 
     /*
     |--------------------------------------------------------------------------

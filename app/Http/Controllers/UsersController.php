@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Conversation;
 use App\PrivateMessage;
+use App\Notifications\UserFollowed;
 
 class UsersController extends Controller
 {
@@ -56,6 +57,13 @@ class UsersController extends Controller
     	//incluir a quien seguire en mi campo
     	//modificar algun dato: con follows()
     	$me->follows()->attach($user);
+
+        //Funciona porque use Notifiable ya esta desde
+        //la creacion del proyecto, en el model User
+        //hacemos la notificacion (app/Notifications/UserFollowed)
+        //Solamente incluimos al usuario logueado $me
+        $user->notify(new UserFollowed($me));
+        //Al $user notificale que $me lo sigue
 
     	//llevar al usuario que estamos siguiendo
     	return redirect("/$username")
