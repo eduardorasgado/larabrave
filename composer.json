@@ -13,11 +13,11 @@
         "laravel/scout": "^4.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
-        "pusher/pusher-php-server": "^3.0"
+        "pusher/pusher-php-server": "^3.0",
+        "fzaninotto/faker": "~1.4",
     },
     "require-dev": {
         "filp/whoops": "~2.0",
-        "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
         "symfony/thanks": "^1.0"
@@ -52,6 +52,10 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+        ],
+        "compile": [
+            "php artisan migrate --force",
+            "php artisan storage:link"
         ]
     },
     "config": {
