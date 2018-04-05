@@ -90,28 +90,29 @@
 
     <div id="app" class="container-fluid">
         <nav class="navbar navbar-expand-md fixed-top navbar-light  mb-4 rounded">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
             <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Larabrave
                 </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
 
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     &nbsp;
-                    <li class="nav-item">
+                    
+                    <li class="nav-item @if(Request::url() == url('/')) active @endif">
                         <a class="nav-link" href="{{ url('/') }}">Inicio</a>
                     </li>
+
                     @guest
                         
                     @else
-                        <li class="nav-item">
+                        <li class="nav-item @if(Request::url() == url('/').'/'.Auth::user()->username) active @endif">
                             <a class="nav-link" href="/{{ Auth::user()->username }}">Mis publicaciones</a>
                         </li>
                     @endguest
@@ -121,9 +122,10 @@
 
                 <!--Campo Search--> 
                 <ul class="nav navbar-nav ml-auto">
+                    <!--el name query se lleva al backend para hacer las busquedas al action-->
                     <form class="form-inline mt-2 mt-md-0 mr-2" action="/messages/search">
                       <input class="form-control mr-sm-2" type="text" placeholder="Un tema interesante" aria-label="Search" name="query" required>
-                      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
 
                     <!-- Authentication Links -->
@@ -171,7 +173,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container-fluid">
             <br><br><br><br>
             @yield('content')
         </div>

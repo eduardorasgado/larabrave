@@ -36,7 +36,7 @@
    <div class="row">
         
     @forelse($messages as $message)
-     <div class="col-6">
+     <div class="col-md-6">
        @include('messages.message')
      </div>
       @empty
