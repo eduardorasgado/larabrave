@@ -46,13 +46,14 @@ class MessagesController extends Controller
             $image = '';
         }
         else{
+            //va al archivo filesystems y se corrobora
+            //y se tiene que hacer un php artisan storage:link
+            //tabla messages, carpeta public
             $image->store('messages', 'public');
         }
 
     	$message = Message::create([
     		'content' => $request->input('message'),
-            //va al archivo filesystems y se corrobora
-            //y se tiene que hacer un php artisan storage:link
     		'image' => $image,
             'user_id' => $user->id,
     	]);

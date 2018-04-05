@@ -72,7 +72,7 @@ class Message extends Model
 	public function getImageAttribute($image)
 	{
 		//SI hay imagen devuelvo link ensamblado
-		//Si hay no imagen devuelvo hhtp
+		//Si hay no imagen devuelvo http
 		if (!$image || starts_with($image,'http') )
 		{
 			return $image;
@@ -90,7 +90,7 @@ class Message extends Model
 		return $this->toArray();
 	}
 
-	//metodo para realcionar los comentarios
+	//metodo para relacionar los comentarios
 	//de cada mensaje
 	public function responses()
 	{

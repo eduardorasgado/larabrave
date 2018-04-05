@@ -12,7 +12,8 @@
 			<h1 class="h3">Id del mensaje: {{ $message->id }}</h1>
 			@include('messages.message')
 
-			<!--Implementacion de VueJs haciendo echo de un blade-->
+			<!--Implementacion Responses de VueJs haciendo echo con blade mandando el id de mensaje-->
+			<!--Como props al componente vue-->
 				<responses :message="{{ $message->id }}"></responses>
 		</div>
 	@else

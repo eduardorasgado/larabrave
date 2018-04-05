@@ -45,11 +45,10 @@
 
       {{-- Para la paginacion de la web, tomando los datos de paginate()--}}
       @if(count($messages))
-        <!--margin top y margin x en class-->
-        <div class="mt-2 mx-auto">
-          {{ $messages->links('pagination::bootstrap-4')}}
-      </div>
-
+              <!--margin top y margin x en class-->
+          <div class="mt-2 mx-auto">
+              {{ $messages->links('pagination::bootstrap-4')}}
+          </div>
     @endif
    
    </div>

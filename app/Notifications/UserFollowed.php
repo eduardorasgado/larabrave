@@ -16,6 +16,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 //importamos clase user porque la usamos aqui
 //y no está en la misma direccion que este archivo
 use App\User;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 
 class UserFollowed extends Notification
 {
@@ -47,9 +48,10 @@ class UserFollowed extends Notification
         //via email y via database, para persistir las 
         //notificaciones usando la tabla notifications
         //migrada con php artisan notifications:tabla
-        return ['mail', 'database'];
+        return ['mail', 'database','broadcast'];
         //con meter database aqui laravel ya guarda los datos 
         //de la notificacion en la db
+        //La via broadcast es usada para PUSHER
     }
 
     /**
@@ -101,5 +103,17 @@ class UserFollowed extends Notification
         return [
             'follower' => $this->follower,
         ];
+    }
+
+    //function usada por pusher
+    //y creada a mano
+    public function toBroadcast($notifiable)
+    {
+        //debe tener la misma estructura que esta 
+        //mostrandose en el dropdown del menu en 
+        //el componente Notifications.vue
+        return new BroadcastMessage([
+            'data' => $this->toArray($notifiable),
+        ]);
     }
 }

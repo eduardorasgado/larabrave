@@ -90,7 +90,8 @@
 
     <div id="app" class="container-fluid">
         <nav class="navbar navbar-expand-md fixed-top navbar-light  mb-4 rounded">
-            <!-- Branding Image -->
+           <div class="container">
+                <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Larabrave
                 </a>
@@ -140,9 +141,11 @@
                             Notificaciones <span class="caret"></span>
                             </a>
 
-                            {{--Componente de VueJS--}}
+                            {{--Componente Notifications de VueJS--}}
                             {{--No funciona si no esta dentro de un div con id=app--}}
                             <notifications :user="{{ Auth::user()->id }}"></notifications>
+                            {{--Estamos pidiendo el user logueado para mandalo a las--}}
+                            {{--props en el componente Notifications de vue--}}
                         </li>
 
                         {{--Dropdown Perfil--}}
@@ -172,6 +175,7 @@
                     @endguest
                 </ul>
             </div>
+           </div>
         </nav>
 
         <div class="container">

@@ -1,8 +1,3 @@
-    <!--div class="col-6">
-        <img class="img-thumbnail" src="{ $message->image }}">
-        <p class="card-text">{ $message->content }} <a href="/messages/{ $message->id }}">Leer mas</a></p>
-    </div-->
-
 
 <div class="card mb-4 box-shadow">
   {{--funcion que apunta a tomar la url interna del proyecto ubicada en .env(la base o host) y unirla a la url del archivo en la carpeta mostrada en config/filesystems.php mas el nombre del archivo a subir--}}

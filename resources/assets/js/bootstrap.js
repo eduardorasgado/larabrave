@@ -46,15 +46,43 @@ if (token) {
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
+ 
+ PASOS PARA USAR PUSHER -----------------------------
+ Instalar:
+	npm install laravel-echo pusher-js --save-dev
+	composer require pusher/pusher-php-server
+	npm run watch
+
+ Pasos para usar pusher:
+ Loguearse y generar app en pusher.com
+ 
+ Despues copiar credenciales en app keys, y llevarlas a .env
+ donde laravel ya tiene un area especial para pusher.
+
+ Ahora vamos a config/broadcasting.php y activamos el driver
+ poneniendo pusher en lugar de null.
+
+ Seguido descomentamos las lineas siguientes de laravel echo
+y sustituimos 'your-pusher-key' por 'la key en.env', porque
+no podemos usar variables de entorno aqui, asi mismo 
+con cluster
+
+y en config/app.php descomentar:
+// App\Providers\BroadcastServiceProvider::class,
+de los providers
+
+programamos el componente y las notificaciones
+
  */
 
-// import Echo from 'laravel-echo'
+import Echo from 'laravel-echo'
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key',
-//     cluster: 'mt1',
-//     encrypted: true
-// });
+window.Echo = new Echo({
+	broadcaster: 'pusher',
+	key: 'a7a624e299e8fb2716f4',
+    cluster: 'us2',
+    //debe estar sincronizado con broadcasting.php
+    encrypted: true
+ });
