@@ -98,7 +98,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <!--Tener cuidado: si el menu burguer no funciona puede ser el id-->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
 
 
                 <!-- Left Side Of Navbar -->
@@ -173,7 +174,7 @@
             </div>
         </nav>
 
-        <div class="container-fluid">
+        <div class="container">
             <br><br><br><br>
             @yield('content')
         </div>
@@ -183,25 +184,24 @@
                 <p class="text-muted">Larabrave. All Rights Reserved &copy;2018. ER Web Labz</p>
             </div>
         </footer>
-        
+     
+    <!--div de container-->
+    </div> 
+
     <!-- Scripts -->
 
     <!--JQUERY desde: http://code.jquery.com/-->
-        <script
+        <!--script
                   src="http://code.jquery.com/jquery-3.3.1.min.js"
                   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                  crossorigin="anonymous"></script>
+                  crossorigin="anonymous"></script-->
     <!--JS de Bootstrap-->
         <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script-->
 
-    <!--div de container-->
-    </div>
-
     <!--Luego de instalar webpack-mix y boostrap4 con npm-->
     <script src="{{ mix('js/app.js') }}"></script>
-    
     
 </body>
 </html>

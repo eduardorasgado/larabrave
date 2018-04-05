@@ -8,7 +8,7 @@
 	<a href="@if(url()->previous() != Request::url()) {{ url()->previous() }} @else / @endif"><button class="btn btn-outline-secondary">Regresar</button></a>
 	<br><br>
 	@if ($message)
-		<div class="col-6">
+		<div class="col-md-6">
 			<h1 class="h3">Id del mensaje: {{ $message->id }}</h1>
 			@include('messages.message')
 

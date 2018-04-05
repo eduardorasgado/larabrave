@@ -71,7 +71,7 @@
 	{{--Mostrando todos los mensajes accediendo a la propiedad hasMany en User.php--}}
 	<div class="row">
 		@foreach($user_mess as $message)
-			<div class="col-6">
+			<div class="col-md-6">
 				@include('messages.message')
 			</div>
 		@endforeach
