@@ -88,7 +88,7 @@
 </head>
 <body>
 
-    <div id="app" class="container">
+    <div id="app" class="container-fluid">
         <nav class="navbar navbar-expand-md fixed-top navbar-light  mb-4 rounded">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -125,7 +125,6 @@
                       <input class="form-control mr-sm-2" type="text" placeholder="Un tema interesante" aria-label="Search" name="query" required>
                       <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
-                    &nbsp;&nbsp;
 
                     <!-- Authentication Links -->
                     @guest
@@ -171,34 +170,34 @@
                 </ul>
             </div>
         </nav>
-    </div>
 
-    <div id="app" class="container">
-        <br><br><br><br>
-        @yield('content')
-    </div>
-</div>
-<div class="container-fluid">
-    <footer class="">
-        <div class="py-3 text-center">
-            <p class="text-muted">Larabrave. All Rights Reserved &copy;2018. ER Web Labz</p>
+        <div class="container">
+            <br><br><br><br>
+            @yield('content')
         </div>
-    </footer>
-</div>
+
+        <footer class="mt-4">
+            <div class="py-3 text-center">
+                <p class="text-muted">Larabrave. All Rights Reserved &copy;2018. ER Web Labz</p>
+            </div>
+        </footer>
+        
     <!-- Scripts -->
 
     <!--JQUERY desde: http://code.jquery.com/-->
-        <!--script
+        <script
                   src="http://code.jquery.com/jquery-3.3.1.min.js"
                   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                  crossorigin="anonymous"></script-->
+                  crossorigin="anonymous"></script>
     <!--JS de Bootstrap-->
         <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script-->
 
-    <!--Luego de instalar webpack-mix y boostrap4 con npm-->
+    <!--div de container-->
+    </div>
 
+    <!--Luego de instalar webpack-mix y boostrap4 con npm-->
     <script src="{{ mix('js/app.js') }}"></script>
     
     
