@@ -52,7 +52,7 @@ class MessagesController extends Controller
         if(!$image){
             $image = '';
         }
-        else if(!starts_with($image,'http') || ends_with($image, '.jpg') || ends_with($image, '.png')){
+        else if(!starts_with($image,'http')){
             
             return redirect('/')->withSuccess("Tu imagen debe ser un link");
         }
