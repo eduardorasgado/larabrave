@@ -28,16 +28,19 @@
             @endforeach
             @endif
           </div>  
-
-         <div class="col-sm-2">
-            <div class="custom-file">
-              {{--Input del file--}}
-              <input class="custom-file-input bg-success" id="customFile" type="file" name="image">
-              <label class="custom-file-label" for="customFile">Imagen</label>          
+          <div class="col-sm-3">
+            <div class="form-group">
+    
+               {{--Input de link--}}
+                <input class="form-control" id="customFile" type="text" name="image" placeholder="http://link-de-imagen.jpg" size="80">
             </div>
-         </div>
+          </div>
+
          <div class="col-sm-1">
            <button type="submit" class="btn btn-primary">Publicar</button>
+           @if(session('success'))
+            <span class="text-success">{{ session('success') }}</span>
+           @endif
          </div>
 
         </div>

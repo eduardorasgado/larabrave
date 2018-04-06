@@ -40,16 +40,21 @@ class MessagesController extends Controller
     	//Y se creo con artisan
 
         $user = $request->user();
-        $image = $request->file('image');
+        //cloud storage
+        //$image = $request->file('image');
+        $image = $request->input('image');
+
+        //va al archivo filesystems y se corrobora
+            //y se tiene que hacer un php artisan storage:link
+            //tabla messages, carpeta public
+            //$image->store('messages', 'public');
 
         if(!$image){
             $image = '';
         }
-        else{
-            //va al archivo filesystems y se corrobora
-            //y se tiene que hacer un php artisan storage:link
-            //tabla messages, carpeta public
-            $image->store('messages', 'public');
+        else if(!starts_with($image,'http') || ends_with($image, '.jpg') || ends_with($image, '.png')){
+            
+            return redirect('/')->withSuccess("Tu imagen debe ser un link");
         }
 
     	$message = Message::create([
@@ -57,10 +62,6 @@ class MessagesController extends Controller
     		'image' => $image,
             'user_id' => $user->id,
     	]);
-
-    	//dd($message);
-
-
     	return redirect('/messages/'.$message->id);
 
     } //create
