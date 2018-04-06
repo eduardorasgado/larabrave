@@ -50,7 +50,7 @@ class SocialAuthController extends Controller
 
     	if ($existing != null){
     		auth()->login($existing);
-    		return view('/');
+    		return redirect('/');
     	}
 
     	//session es funcion de laravel, flash es un metodo
