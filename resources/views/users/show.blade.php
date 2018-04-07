@@ -20,13 +20,13 @@
 				</a>
 			</div>
 		@else
-			<div class="col-1.5">
+			<div class="col-2">
 				<h4><a href="/{{ $user->username }}/followers"><button class="btn btn-outline-primary">Le siguen</button>
 					<span class="badge badge-dark">{{ $user->followers->count() }}</span></h4>
 				</a>
 			</div>
 		@endif
-		<div class="col-2">
+		<div class="col-3">
 			<h4><a href="/{{ $user->username }}/follows"><button class="btn btn-outline-primary">Siguiendo a</button>
 				<span class="badge badge-dark">{{ $user->follows->count() }}</span></h4>
 			</a>

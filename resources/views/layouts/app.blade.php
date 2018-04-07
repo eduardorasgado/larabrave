@@ -82,8 +82,28 @@
                 border-radius: 30px;
                 border:5px solid #666;
             }
+
+            /*<!--video background-->*/
+            .whov:hover { background-color: #00695c!important; }
+            .view {
+                background-position: center center;
+                background-repeat: no-repeat;
+                height: 500px;
+            }
+            .secondbase {
+                background-color: rgba(255,255,255,.6); 
+                margin-top: -90px;
+            }
+
     </style>
-    
+    <!--video background-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://mdbootstrap.com/previews/docs/latest/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://mdbootstrap.com/previews/docs/latest/css/mdb.min.css" rel="stylesheet">
+
+<!--video background-->
 
 </head>
 <body>
@@ -127,7 +147,7 @@
                     <!--el name query se lleva al backend para hacer las busquedas al action-->
                     <form class="form-inline mt-2 mt-md-0 mr-2" action="/messages/search">
                       <input class="form-control mr-sm-2" type="text" placeholder="Un tema interesante" aria-label="Search" name="query" required>
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                      <button class="btn btn-outline-black my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
 
                     <!-- Authentication Links -->
@@ -178,7 +198,7 @@
            </div>
         </nav>
 
-        <div class="container">
+        <div class="container-fluid">
             <br><br><br><br>
             @yield('content')
         </div>
@@ -207,5 +227,16 @@
     <!--Luego de instalar webpack-mix y boostrap4 con npm-->
     <script src="{{ mix('js/app.js') }}"></script>
     
+    <!--video background-->
+
+    <script src="https://mdbootstrap.com/previews/docs/latest/js/bootstrap.min.js"></script>
+    <script src="https://mdbootstrap.com/previews/docs/latest/js/mdb.min.js"></script>
+    <script src="https://mdbootstrap.com/previews/docs/latest/js/jarallax.js"></script>
+    <script src="https://mdbootstrap.com/previews/docs/latest/js/jarallax-video.js"></script>
+    <script>
+        new WOW().init();
+    </script> 
+    <!--video background-->
+
 </body>
 </html>

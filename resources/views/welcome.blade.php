@@ -1,11 +1,22 @@
 @extends("layouts.app")
 
 @section('content')
-   <div class="jumbotron text-center" id="main_jumbo">
-       <h1 id="main_title">Larabrave</h1>
-       <h5>La comunidad mas grande de escritores en latinoamérica</h5> 
-        <h4 id="main-phrase">¿Sobre qué leeremos hoy?</h4>
-   </div>
+   
+  <!--video background-->
+   <div class="view hm-white-light jarallax" data-jarallax='{"speed": 0.2}' data-jarallax-video="https://www.youtube.com/watch?v=dk9uNWPP7EA&list=PL7cdQfbJcOxP_Ii2ifE-8NXj_qP1Mzb7a">
+            <div class="full-bg-img">
+                <div class="container flex-center">
+                    <!--aqui van letras-->
+                      <div class="text-center" id="main_jumbo" style="color: white;">
+                         <h1 id="main_title">Larabrave</h1>
+                         <h5>La comunidad mas grande de escritores en latinoamérica</h5> 
+                          <h4 id="main-phrase">¿Sobre qué leeremos hoy?</h4>
+                      </div>
+                  </div>
+            </div>
+    </div>
+    <br>
+            <!--video background-->
 
    <!--formulario-->
    <div class="row md-4">
